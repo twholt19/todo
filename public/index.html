@@ -5,9 +5,11 @@
 			body{
 				max-width:100%;
 				text-align: center;
+				background-color: black;
+				font-family: "helvetica";
 			}
 			h1{
-				color:black;
+				color:white;
 				margin:0 auto;
 				margin-bottom: 20px;
 				text-align: center;
@@ -24,6 +26,12 @@
 				padding:15px;
 				border-radius:7px;
 			}
+			a{
+				padding-left: 20px;
+				color: #C5E105;
+			}
+			
+			
 		</style>
 		<script>
 			function loadURL(url, callback)
@@ -112,8 +120,9 @@ function getXMLHTTPRequest()
 			var list = JSON.parse(data);
 			var output = "";
 			for (var i = 0; i < list.length; i++) {
-				output = output + "<p>"+ list[i] + "</p> ";
-				output = output + "<a href='javascript:deleteTodo(" + i.toString() + ")'>" + "Delete</a>";
+				output = output + "<p>"+ list[i] + "<a href='javascript:deleteTodo(" + i.toString() + ")'>" + "&#10007;</a>" + "</p> ";
+				//output = output + "<a href='javascript:deleteTodo(" + i.toString() + ")'>" + "&#10007;</a>";
+				output = output + ""
 				output = output + "<hr>";
 			}
 			document.getElementById("list").innerHTML = output;
@@ -133,10 +142,10 @@ function getXMLHTTPRequest()
 	
 		</script>
 	</head>
-	<body>
+	<body onload="updateList()">
 		<div id="tt">
 		<h1>Todos</h1>
-		<a href="javascript:addNew()">Add New Item To Do:</a>
+		<a class="add" href="javascript:addNew()">Add New Item To Do:</a>
 		</div>
 		
 		<div id="list">

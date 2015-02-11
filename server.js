@@ -18,9 +18,10 @@ app.get("/addTodo", function (req, res) {
   res.end("success");
 });
 
-app.get("/deleteTodo(index)", function (req, res) {
-  todos.splice(req.query.deleteTodo.index, 1);
-  console.log(todos);
+app.get("/deleteTodo", function (req, res) {
+  var i = req.query.index;
+  todos.splice(i, 1);
+  //console.log(todos);
   res.end("deleted");
 });
 
